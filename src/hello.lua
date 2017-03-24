@@ -2,6 +2,8 @@ CC_USE_DEPRECATED_API = true
 require "cocos.init"
 local client = require "network.client"
 local LoginScene = require "LoginScene"
+local HallScene = require "HallScene"
+local TableScene = require "TableScene"
 
 -- cclog
 cclog = function(...)
@@ -26,7 +28,7 @@ local function initGLView()
 
     director:setOpenGLView(glView)
 
-    glView:setDesignResolutionSize(1280, 720, cc.ResolutionPolicy.NO_BORDER)
+    glView:setDesignResolutionSize(1138, 640, cc.ResolutionPolicy.NO_BORDER)
 
     --turn on display FPS
     director:setDisplayStats(true)
@@ -51,8 +53,10 @@ local function main()
 --	c:close()
 	
     -- run
-    local loginScene = LoginScene:create()
-    cc.Director:getInstance():runWithScene(loginScene)
+    --local scene = LoginScene:create()
+	local scene = HallScene:create()
+	--local scene = TableScene:create()
+    cc.Director:getInstance():runWithScene(scene)
 end
 
 xpcall(main, __G__TRACKBACK__)
